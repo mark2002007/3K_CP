@@ -2,14 +2,14 @@ function u_n = MFR(x_1, x_2, y_, f_1, f_2, n = 3)
   #Fundamental Solution
   F = @(x,y) 1 ./(2 .*pi).*log(1 ./vecnorm(x-y, 2, 2));
   #COMPUTE
-  A = zeros(2*n, n);
+  A = zeros(n, n);
   #A and b 
-  for ii = 1:n
+  for ii = 1:n/2
     for jj = 1:n
       A(ii, jj)     = F(x_1(4*pi*ii/n),y_(jj,:));
-      A(ii + n, jj) = F(x_2(4*pi*ii/n),y_(jj,:));
+      A(ii + n/2, jj) = F(x_2(4*pi*ii/n),y_(jj,:));
       b(ii,1)       = f_1(x_1(4*pi*ii/n));
-      b(ii + n,1)   = f_2(x_2(4*pi*ii/n));
+      b(ii + n/2,1)   = f_2(x_2(4*pi*ii/n));
     endfor
   endfor
   #Solve A*l = b

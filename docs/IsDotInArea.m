@@ -1,4 +1,4 @@
-function res = IsDotInArea(dot, x, T = 2*pi) #Make for parametric 
+function res = IsDotInArea(dot, x, T = 2*pi)
   sym_x = sym(x);
   #Check horizontaly
   dots = double(solve(sym_x(2) == dot(2)));
